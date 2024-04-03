@@ -1,0 +1,16 @@
+{
+  "name": "cursovaya_new",
+  "version": "1.0.0",
+  "description": "fdjfjf",
+  "main": "main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^29.1.6"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
