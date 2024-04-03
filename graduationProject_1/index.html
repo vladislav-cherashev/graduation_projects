@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <link href="./styles.css" rel="stylesheet">
+    <title>Расчёт профиля радиорелейного интервала с учетом динамического изменения топологии цифровой радиорелейной
+        сети</title>
+</head>
+<body class="body">
+<h2>Расчёт профиля радиорелейного интервала с учетом динамического изменения топологии цифровой радиорелейной сети</h2>
+<div class="tab">
+    <input checked id="tab-btn-1" name="tab-btn" type="radio" value="">
+    <label for="tab-btn-1">Исходные данные</label>
+    <input id="tab-btn-2" name="tab-btn" type="radio" value="">
+    <label for="tab-btn-2">Расчёт 1</label>
+    <input id="tab-btn-3" name="tab-btn" type="radio" value="">
+    <label for="tab-btn-3">Расчёт 2</label>
+    <div class="tab-content" id="content-1">
+        <div class="input__place">
+            <form id="form-data" class="input__form">
+                <div class="label">Исходные данные</div>
+                <div class="div">
+                    <div class="name">Н лев</div>
+                    <input id="Nlev" type="number" placeholder="0" name="Nlev"/>
+                    <div class="unit">м</div>
+                </div>
+                <div class="div">
+                    <div class="name">Н прав</div>
+                    <input id="Nprav" type="number" placeholder="0" name="Nprav"/>
+                    <div class="unit">м</div>
+                </div>
+                <div class="div">
+                    <div class="name">R₁</div>
+                    <input id="R1" type="number" placeholder="0" name="R1"/>
+                    <div class="unit">м</div>
+                </div>
+                <div class="div">
+                    <div class="name">R₀</div>
+                    <input id="R0" type="number" placeholder="0" name="R0"/>
+                    <div class="unit">м</div>
+                </div>
+                <div class="div">
+                    <div class="name">c</div>
+                    <input id="c" type="number" placeholder="0" name="c"/>
+                    <div class="unit">м/с</div>
+                </div>
+                <div class="div">
+                    <div class="name">f</div>
+                    <input id="fmin" type="number" placeholder="0" name="fmal"/>
+                    <div class="unit">Гц</div>
+                </div>
+                <div class="div">
+                    <div class="name">|Фотр|</div>
+                    <input id="Fotr" type="number" placeholder="0" name="Fotr"/>
+                    <div class="unit"></div>
+                </div>
+                <div class="div">
+                    <div class="name">|Ф|</div>
+                    <input id="Fbig" type="number" placeholder="0" name="Fbig"/>
+                    <div class="unit"></div>
+                </div>
+                <div class="div">
+                    <div class="name">ŋ АВТ пост</div>
+                    <input id="AVTpost" type="number" placeholder="0" name="nAVT"/>
+                    <div class="unit">дБ</div>
+                </div>
+                <div class="div">
+                    <div class="name">ŋ АВТ уд</div>
+                    <input id="AVTud" type="number" placeholder="0" name="nAVTud"/>
+                    <div class="unit">дБ</div>
+                </div>
+                <div class="div">
+                    <div class="name">Р пд</div>
+                    <input id="Rpd" type="number" placeholder="0" name="Rpd"/>
+                    <div class="unit">Вт</div>
+                </div>
+                <div class="div">
+                    <div class="name">G пд</div>
+                    <input id="Gpd" type="number" placeholder="0" name="Gpd"/>
+                    <div class="unit">дБ</div>
+                </div>
+                <div class="div">
+                    <div class="name">G пм</div>
+                    <input id="Gpm" type="number" placeholder="0" name="Gpm"/>
+                    <div class="unit">дБ</div>
+                </div>
+                <div class="div">
+                    <div class="name">R пр</div>
+                    <input id="Rpm" type="number" placeholder="0" name="Rpr"/>
+                    <div class="unit">м</div>
+                </div>
+                <div class="div">
+                    <div class="name">W о</div>
+                    <input id="Wo" type="number" placeholder="0" name="Wo"/>
+                    <div class="unit">дБ</div>
+                </div>
+                <div class="div">
+                    <div class="name">H преп</div>
+                    <input id="Nprep" type="number" placeholder="0" name="Nprep"/>
+                    <div class="unit">м</div>
+                </div>
+                <div class="div">
+                    <div class="name">φф</div>
+                    <input id="Func" type="number" placeholder="0" name="Func"/>
+                    <div class="unit"></div>
+                </div>
+                <input id="btn-form" class="btn" type="button" value="Рассчитать" name="calculate"/>
+                <input class="btn" type="reset" name="reset"/>
+            </form>
+        </div>
+    </div>
+
+    <!--Вторая секция-->
+    <div class="tab-content" id="content-2">
+        <div class="output">
+            <div>Радиус минимальной зоны Френеля</div>
+            <div class="div">
+                <div class="name">k</div>
+                <input id="k" type="number" readonly placeholder="0" name="k"/>
+                <div class="unit"></div>
+            </div>
+            <div class="div">
+                <div class="name">λ</div>
+                <input id="lambda" type="number" readonly placeholder="0" name="lambda"/>
+                <div class="unit">м</div>
+            </div>
+            <div class="div">
+                <div class="name">H ο</div>
+                <input id="Ho" type="number" readonly placeholder="0" name="Ho"/>
+                <div class="unit">м</div>
+            </div>
+            <hr>
+            <div>Величина просвета</div>
+            <div class="div">
+                <div class="name">H</div>
+                <input id="H" type="number" readonly placeholder="0" name="H"/>
+                <div class="unit">м</div>
+            </div>
+            <hr>
+            <div>Минимальная величина поднятия антенн</div>
+            <div class="div">
+                <div class="name">H подн</div>
+                <input id="Hpodn" type="number" readonly placeholder="0" name="Hpodn"/>
+                <div class="unit">м</div>
+            </div>
+        </div>
+    </div>
+
+    <!--Третья секция-->
+    <div class="tab-content" id="content-3">
+        <div class="output">
+            <div>Множитель ослабления</div>
+            <div class="div">
+                <div class="name">Δʀ</div>
+                <input id="delta" type="number" readonly placeholder="0" name="delta"/>
+                <div class="unit"></div>
+            </div>
+            <div class="div">
+                <div class="name">|V|</div>
+                <input id="or" type="number" readonly placeholder="0" name="or"/>
+                <div class="unit"></div>
+            </div>
+            <hr>
+            <div>Мощность сигнала на входе приемника РРС</div>
+            <div class="div">
+                <div class="name">n АВТ</div>
+                <input id="nAVT" type="number" readonly placeholder="0" name="nAVT"/>
+                <div class="unit">дБ</div>
+            </div>
+            <div class="div">
+                <div class="name">Р опм</div>
+                <input id="RoPM" type="number" readonly placeholder="0" name="RoPM"/>
+                <div class="unit">дБВт</div>
+            </div>
+            <hr>
+            <div>Медианное ослабление радиоволн на интервале</div>
+            <div class="div">
+                <div class="name">W св.i</div>
+                <input id="Wcvi" type="number" readonly placeholder="0" name="Wcvi"/>
+                <div class="unit">дБ</div>
+            </div>
+            <div class="div">
+                <div class="name">µ</div>
+                <input id="xui" type="number" readonly placeholder="0" name="xui"/>
+                <div class="unit"></div>
+            </div>
+            <div class="div">
+                <div class="name">h</div>
+                <input id="ha" type="number" readonly placeholder="0" name="ha"/>
+                <div class="unit"></div>
+            </div>
+            <div class="div">
+                <div class="name">W pi</div>
+                <input id="Wpi" type="number" readonly placeholder="0" name="Wpi"/>
+                <div class="unit">дБ</div>
+            </div>
+            <div class="div">
+                <div class="name">W мед.i</div>
+                <input id="WmedI" type="number" readonly placeholder="0" name="WmedI"/>
+                <div class="unit">дБ</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./renderer.js"></script>
+<script src="lodash.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

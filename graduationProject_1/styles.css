@@ -1,0 +1,163 @@
+/* styles.css */
+
+/* Add styles here to customize the appearance of your app */
+.input__place {
+    margin-top:     25px;
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+}
+
+.input__form {
+    display:        flex;
+    flex-direction: column;
+    gap:            10px;
+    vertical-align: middle;
+}
+
+.output{
+    margin-top:     25px;
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            10px;
+}
+
+.body {
+    background:  white;
+    font-family: sans-serif, "Segoe UI", "Roboto Light";
+}
+
+
+#calculate-btn {
+    margin-top: 10px;
+}
+
+.div {
+    display:         flex;
+    flex-direction:  row;
+    justify-content: space-between;
+    gap:             10px;
+}
+
+.name {
+    display: block;
+    width:   100px;
+}
+
+.label {
+    width:       inherit;
+    text-align:  center;
+}
+
+.unit {
+    display: block;
+    width:   50px;
+}
+
+input {
+    border:        1px solid;
+    border-color:  blue;
+    border-radius: 6px;
+}
+
+.tab > input[type="radio"] {
+    display: none;
+}
+
+.tab-content {
+    display: none;
+}
+
+#tab-btn-1:checked ~ #content-1,
+#tab-btn-2:checked ~ #content-2,
+#tab-btn-3:checked ~ #content-3 {
+    display: block;
+}
+.tab {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tab > input[type="radio"] {
+    display: none;
+}
+
+.tab-content {
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+#tab-btn-1:checked~#content-1,
+#tab-btn-2:checked~#content-2,
+#tab-btn-3:checked~#content-3 {
+    display: block;
+}
+
+.tab > label {
+    display: block;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    text-decoration: none;
+    color: #0d6efd;
+    border: 0;
+    border-radius: 0.375rem;
+    background: 0 0;
+}
+
+.tab > input[type="radio"]:checked + label {
+    cursor: default;
+    color: #fff;
+    background-color: #0d6efd;
+}
+
+hr{
+    display: block;
+    width: 300px;
+}
+
+.btn {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 15px;
+    margin: 0 15px 15px 0;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    background-color: #1a73e8;
+    position: relative;
+    overflow:hidden;
+    vertical-align: top;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    z-index: 1;
+}
+
+.btn span{
+    position: absolute;
+    background: #fff;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: btn_ripples 0.6s linear infinite;
+}
+
+.btn:hover {
+    box-shadow: 0 1px 2px 0 rgb(26 115 232 / 45%), 0 1px 3px 1px rgb(26 115 232 / 30%);
+    background-color: #297be6;
+}
+
+.btn:active {
+    box-shadow: 0 1px 2px 0 rgb(26 115 232 / 45%), 0 2px 6px 2px rgb(26 115 232 / 30%);
+    background-color: #1a73e8 !important;
+}
